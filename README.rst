@@ -52,7 +52,7 @@ You can perform a minimal install of ``gym`` with:
 
 .. code:: shell
 
-    git clone https://github.com/openai/gym.git
+    git clone https://github.com/wensun/gym.git
     cd gym
     pip install -e .
 
