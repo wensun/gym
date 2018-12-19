@@ -4,7 +4,11 @@ OpenAI Gym
 **********
 
 **OpenAI Gym is a toolkit for developing and comparing reinforcement learning algorithms.** This is the ``gym`` open-source library, which gives you access to a standardized set of environments.
-**New: In mujoco, there are swimmer and reacher with multidiscrete action space**
+
+
+**New here:**
+
+- In mujoco, there are swimmer and reacher with multidiscrete action space
 
 .. image:: https://travis-ci.org/openai/gym.svg?branch=master
     :target: https://travis-ci.org/openai/gym
