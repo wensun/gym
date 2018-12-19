@@ -8,7 +8,7 @@ OpenAI Gym
 
 **New here:**
 
-- In mujoco, there are swimmer and reacher with multidiscrete action space
+- In mujoco, there are swimmer (SwimmerDiscrete-v2) and reacher (ReacherDiscrete-v2) with multidiscrete action space
 
 .. image:: https://travis-ci.org/openai/gym.svg?branch=master
     :target: https://travis-ci.org/openai/gym
