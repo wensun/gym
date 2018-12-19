@@ -13,6 +13,7 @@ class ReacherEnv_discretize(mujoco_env.MujocoEnv, utils.EzPickle):
         lows = np.copy(self.action_space.low)
 
         self.action_space = spaces.MultiDiscrete([self.K]*a_dim)
+        self.action_space.nvec = self.action_space.nvec.astype('int32')
         self.actions = np.zeros((a_dim, self.K))
 
         for i in range(a_dim):

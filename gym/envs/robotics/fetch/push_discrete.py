@@ -28,7 +28,13 @@ class FetchPushEnv_discrete(fetch_env.FetchEnv, utils.EzPickle):
         lows[0:3] = lows[0:3]*0.05
         self.K = 5
         a_dim = 3
+
+        obs = self._get_obs()
+        raw = self.get_raw_obs(obs)
+        self.observation_space = spaces.Box(-np.inf, np.inf, shape=raw.shape, dtype='float32')
+
         self.action_space = spaces.MultiDiscrete([self.K]*a_dim)
+        self.action_space.nvec = self.action_space.nvec.astype('int32')
         self.real_actions = np.zeros((a_dim, self.K))
         for i in range(a_dim):
             delta = (highs[i] - lows[i])/(self.K - 1)
