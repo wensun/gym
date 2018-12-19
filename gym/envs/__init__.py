@@ -211,6 +211,13 @@ register(
 )
 
 register(
+    id='ReacherDiscrete-v2',
+    entry_point='gym.envs.mujoco:ReacherEnv_discretize',
+    max_episode_steps=50,
+    reward_threshold=3.75,
+)
+
+register(
     id='Pusher-v2',
     entry_point='gym.envs.mujoco:PusherEnv',
     max_episode_steps=100,
@@ -263,6 +270,13 @@ register(
     id='Swimmer-v2',
     entry_point='gym.envs.mujoco:SwimmerEnv',
     max_episode_steps=1000,
+    reward_threshold=360.0,
+)
+
+register(
+    id='SwimmerDiscrete-v2',
+    entry_point='gym.envs.mujoco:SwimmerEnv_discretize',
+    max_episode_steps=100,
     reward_threshold=360.0,
 )
 
