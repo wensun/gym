@@ -267,6 +267,13 @@ register(
 )
 
 register(
+    id='HopperDiscrete-v2',
+    entry_point='gym.envs.mujoco:HopperEnv_discrete',
+    max_episode_steps=100,
+    reward_threshold=3800.0,
+)
+
+register(
     id='Swimmer-v2',
     entry_point='gym.envs.mujoco:SwimmerEnv',
     max_episode_steps=1000,
