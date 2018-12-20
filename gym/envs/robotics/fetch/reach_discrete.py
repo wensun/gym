@@ -1,7 +1,8 @@
 import os
-from gym import utils
+from gym import utils,spaces
 from gym.envs.robotics import fetch_env
-
+import numpy as np
+from gym.envs.robotics import utils as r_utils 
 
 # Ensure we get the path separator correct on windows
 MODEL_XML_PATH = os.path.join('fetch', 'reach.xml')

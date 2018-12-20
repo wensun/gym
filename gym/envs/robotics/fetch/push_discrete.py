@@ -82,11 +82,15 @@ class FetchPushEnv_discrete(fetch_env.FetchEnv, utils.EzPickle):
         return raw_obs, reward, done, info
 
     def reset(self):
-        did_reset_sim = False
-        while not did_reset_sim:
-            did_reset_sim = self._reset_sim()
-        self.goal = self._sample_goal().copy()
-        obs = self._get_obs()
-        raw_obs = self.get_raw_obs(obs)
+        while True:
+            did_reset_sim = False
+            while not did_reset_sim:
+                did_reset_sim = self._reset_sim()
+            self.goal = self._sample_goal().copy()
+            obs = self._get_obs()
+            raw_obs = self.get_raw_obs(obs)
+
+            if np.linalg.norm(raw_obs[3:6]) > self.distance_threshold:
+                break
         return raw_obs
 
