@@ -9,7 +9,7 @@ OpenAI Gym
 **New here:**
 
 - In mujoco, there are swimmer (SwimmerDiscrete-v2), hopper (HopperDiscrete-v2), and reacher (ReacherDiscrete-v2) with multidiscrete action space
-- In robotics, there is fetch push (FetchPushDiscrete-v1) with multidiscrete action space with observation space simplied as the one in mujoco setting
+- In robotics, there is fetch reach (FetchReachDiscrete-v1) with multidiscrete action space with observation space simplied as the one in mujoco setting
 
 .. image:: https://travis-ci.org/openai/gym.svg?branch=master
     :target: https://travis-ci.org/openai/gym
