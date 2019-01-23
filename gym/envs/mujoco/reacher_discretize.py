@@ -16,9 +16,18 @@ class ReacherEnv_discretize(mujoco_env.MujocoEnv, utils.EzPickle):
         self.action_space.nvec = self.action_space.nvec.astype('int32')
         self.actions = np.zeros((a_dim, self.K))
 
+        self.goal_threshold = 0.05
+
         for i in range(a_dim):
             delta = (highs[i] - lows[i])/(self.K-1)
             self.actions[i,:] = np.array([lows[i]+delta*k for k in range(self.K)])
+
+
+    def is_success(self):
+        if np.linalg.norm(self.get_body_com('fingertip') - self.get_body_com('target')) <= 0.05:
+            return True
+        else:
+            return False
 
     def step(self, a_index):
         #assert a_index.ndim == 1 and a_index.dtype == int
@@ -36,8 +45,9 @@ class ReacherEnv_discretize(mujoco_env.MujocoEnv, utils.EzPickle):
         reward = reward_dist + reward_ctrl
         self.do_simulation(a, self.frame_skip)
         ob = self._get_obs()
+        info = {'is_success': self.is_success()}
         done = False
-        return ob, reward, done, dict(reward_dist=reward_dist, reward_ctrl=reward_ctrl)
+        return ob, reward, done, info #dict(reward_dist=reward_dist, reward_ctrl=reward_ctrl)
 
     def viewer_setup(self):
         self.viewer.cam.trackbodyid = 0
