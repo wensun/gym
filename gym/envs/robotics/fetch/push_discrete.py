@@ -26,7 +26,7 @@ class FetchPushEnv_discrete(fetch_env.FetchEnv, utils.EzPickle):
         lows = self.action_space.low
         highs[0:3] = highs[0:3]*0.05
         lows[0:3] = lows[0:3]*0.05
-        self.K = 5
+        self.K =  10
         a_dim = 3
 
         obs = self._get_obs()
@@ -57,6 +57,7 @@ class FetchPushEnv_discrete(fetch_env.FetchEnv, utils.EzPickle):
     def get_raw_obs(self, obs):
         raw_obs = np.copy(obs['observation'])
         raw_obs[3:6] -= obs['desired_goal']
+        #return raw_obs[3:]
         return raw_obs
 
 
@@ -82,15 +83,13 @@ class FetchPushEnv_discrete(fetch_env.FetchEnv, utils.EzPickle):
         return raw_obs, reward, done, info
 
     def reset(self):
-        while True:
-            did_reset_sim = False
-            while not did_reset_sim:
-                did_reset_sim = self._reset_sim()
-            self.goal = self._sample_goal().copy()
-            obs = self._get_obs()
-            raw_obs = self.get_raw_obs(obs)
+        #while True:
+        did_reset_sim = False
+        while not did_reset_sim:
+            did_reset_sim = self._reset_sim()
+        self.goal = self._sample_goal().copy()
+        obs = self._get_obs()
+        raw_obs = self.get_raw_obs(obs)
 
-            if np.linalg.norm(raw_obs[3:6]) > self.distance_threshold:
-                break
         return raw_obs
 
